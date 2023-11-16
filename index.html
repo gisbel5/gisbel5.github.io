@@ -1,82 +1,116 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-  	<title>Login 03</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        color: black;
+        font-family: Arial, sans-serif;
+        background-color: rgb(233, 232, 232);
+        background-size: cover;
+      }
 
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+      .login-container {
+        background-color: rgb(202, 216, 182);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: right;
+        border-color: black;
+      }
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	
-	<link rel="stylesheet" href="./login/css/style.css">
-	<script src="sijs/cookie.js"></script>
-	</head>
-	<body>
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Login Yeaa</h2>
-				</div>
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-md-7 col-lg-5">
-					<div class="login-wrap p-4 p-md-5">
-		      	<div class="d-flex">
-		      		<div class="w-100">
-		      			<h3 class="mb-4">Sign In</h3>
-		      		</div>
-							
-		      	</div>
-						<form action="#" class="login-form">
-		      		<div class="form-group">
-		      			<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
-		      			<input type="text" class="form-control rounded-left" placeholder="bella" required>
-		      		</div>
-	            <div class="form-group">
-	            	<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span></div>
-	              <input type="password" class="form-control rounded-left" placeholder="cobain" required>
-	            </div>
-	            
-								<div class="w-100 d-flex justify-content-end">
-		            	
-						<button type="submit" class="btn btn-primary rounded submit" id="button"
-      onclick="PostSignUp()">Login</button>
-	            	</div>
-	            </div>
-	            <div class="form-group mt-4">
-								<div class="w-100 text-center">
-									<p class="mb-1">Masukkan text yang ada di placeholder</p>
-									<p><a href="#">Harap Bersabar, Karena Login Membutuhkan Waktu</a></p>
-								</div>
-	            </div>
-	          </form>
-	        </div>
-				</div>
-			</div>
-		</div>
-	</section>
+      .input-group {
+        margin-bottom: 20px;
+      }
 
-	<script src="./login/js/jquery.min.js"></script>
-  <script src="./login/js/popper.js"></script>
-  <script src="./login/js/bootstrap.min.js"></script>
-  <script src="./login/js/main.js"></script>
+      .input-group input {
+        width: 300px;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 3px;
+        margin-top: 5px;
+        background-color: white;
+      }
 
-  <script type="module" src="./sijs/post.js"></script>
-  <script type="module">
-	// Nama cookie yang akan diperiksa
+      .login-button {
+        background-color: rgb(203, 235, 155);
+        color: black;
+        padding: 10px 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
 
+      .login-button:hover {
+        background-color: rgb(79, 76, 76);
+      }
+      .ftco-section {
+  padding: 7em 0; }
+  .container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto; }
+    </style>
+       <script src="sijs/cookie.js"></script>
+  </head>
+ 
+  <body>
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div style="text-align: center;">
+            <h2 >Login Yeaa</h2>
+          </div>
+        </div><br><br>
+      
+    <div class="login-container">
+        <H3>Sign In</H3>
+      <div class="input-group">
+        <i class="fa fa-user icon">
+        </i>
+        <input type="text" placeholder="bella" id="username" />
+      </div>
+      <div class="input-group">
+        <input type="password" placeholder="cobain" id="password" />
+      </div>
+      <button type="submit" class="login-button" id="button"
+      onclick="PostSignUp()">Sign In</button>
+      
+    <!-- <h4>Tidak punya akun?</h4>
+    <a href="signup.html">Daftar</a> -->
+    </div> <br><br>
+    <p style="text-align: center;">Masukkan text yang ada di placeholder</p>
+    <p style="text-align: center; color: rgb(170, 194, 134);">Perhatikan! Harap bersabar, Login membutuhkan waktu</p>
+  </div>
+</section>
+    <script type="module" src="./sijs/post.js"></script>
+    <script type="module">
+      // Nama cookie yang akan diperiksa
+  
+  
+      import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
+      const cookieName = "token";
+  
+      // Periksa apakah cookie ada dengan menggunakan fungsi dari file cookieUtil.js
+      if (getCookie(cookieName)) {
+        // Jika cookie tidak ada, arahkan kembali ke halaman signin
+        window.location.href = "./dashboard.html";
+      }
+    </script>
 
-	import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
-	const cookieName = "token";
-
-	// Periksa apakah cookie ada dengan menggunakan fungsi dari file cookieUtil.js
-	if (getCookie(cookieName)) {
-	  // Jika cookie tidak ada, arahkan kembali ke halaman signin
-	  window.location.href = "./dashboard.html";
-	}
-  </script>
-	</body>
+    <script src="sijs/main.js"></script>
+  </body>
 </html>
-
